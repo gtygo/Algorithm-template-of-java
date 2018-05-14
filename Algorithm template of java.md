@@ -154,6 +154,53 @@ public static void main(String []args){
 	}
 ```
 
+##### 求1/n循环节
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.nio.Buffer;
+import java.util.*;
+//如果1<=b<a,a没有2或5的质因子，并且a与b互质，那么b/a 的循环节位数恰好等于min(10e≡1(moda)),e是正整数。
+//如果1<=b<a,a没有2或5的质因子，并且a与b互质，那么b/a 的循环节位数必整除ϕ(a)
+
+public class Main {
+	public static void main(String []args) {
+		Scanner in=new Scanner(System.in) ;
+		int maxn=1005;
+		int res[]=new int[maxn];
+		int i,j,n;
+		for(int temp=1;temp<=1000;temp++){
+			i=temp;
+			while(i%2==0){
+				i/=2;
+			}
+			while(i%5==0){
+				i/=5;
+			}
+			n=1;
+			for(j=1;j<=i;j++){
+				n*=10; n%=i;
+				if(n==1) {
+					res[temp] = j;
+					break;
+				}
+			}
+		}
+		int max_re;
+		n=in.nextInt();
+		max_re=1;
+		for(i=1;i<=n;i++){
+			if(res[i]>res[max_re]){
+				max_re=i;
+			}
+		}
+		System.out.println(max_re);
+	}
+}
+
+```
+
 ##### 素数筛
 
 ```java
